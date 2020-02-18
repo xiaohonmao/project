@@ -1,1 +1,63 @@
-<div></div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <counter-btn type="incremence"></counter-btn>
+        <counter-span></counter-span>
+        <counter-btn type="decremence"></counter-btn>
+    </div>
+    <script>
+        Vue.component('counter-span', {
+            template: `<span>{{$store.state.count}}<span>`
+        })
+
+        Vue.component('counter-btn', {
+            props: ['type'],
+            template: `<button @click="handleClick">{{btntext}}</button>`,
+            computed: {
+                btntext() {
+                    return this.type === 'incremence' ? '+' : '-'
+                }
+            },
+            methods: {
+                handleClick() {
+                    if (this.type === "incremence") {
+                        store.commit('incremence', 3);
+                    } else {
+                        store.commit('decremence', 2)
+                    }
+                }
+            },
+        })
+
+        var store = new Vuex.Store({
+            state: {
+                count: 0
+            },
+            mutations: {
+                incremence(state, num) {
+                    state.count += num;
+                },
+                decremence(state, num) {
+                    state.count -= num;
+                }
+            }
+        })
+
+        var vm = new Vue({
+            store,
+            el: "#app",
+        })
+    </script>
+</body>
+
+</html>
