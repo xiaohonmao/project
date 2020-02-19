@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .left {
+            background-color: tomato;
+            height: 100px;
+        }
+
+        .right {
+            background-color: gold;
+            height: 100px;
+        }
+
+        /* 浮动 */
+        .outer1 .left {
+            width: 200px;
+            float: left;
+        }
+
+        .outer1 .right {
+            width: auto;
+            margin-left: 200px;
+        }
+
+        /* flex */
+        /* flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。 */
+        /* flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 */
+        /* flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。 */
+        .outer2 {
+            display: flex;
+        }
+
+        .outer2 .left {
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 200px;
+        }
+
+        .outer2 .right {
+            flex: auto;
+            /* 1 1 auto */
+        }
+
+        /* position */
+        .outer3 {
+            position: relative;
+        }
+
+        .outer3 .left {
+            position: absolute;
+            width: 200px;
+        }
+
+        .outer3 .right {
+            margin-left: 200px;
+        }
+
+        /* position again */
+        .outer4{
+            position: relative;
+        }
+        .outer4 .left{
+            width: 200px;
+        }
+        .outer4 .right{
+            position: absolute;
+            top: 0;
+            left: 200px;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 左右两栏，左边固定，右边自适应 -->
+    <div class="outer outer1">
+        <div class="left">1-left</div>
+        <div class="right">1-right</div>
+    </div>
+    <div class="outer outer2">
+        <div class="left">2-left</div>
+        <div class="right">2-right</div>
+    </div>
+    <div class="outer outer3">
+        <div class="left">3-left</div>
+        <div class="right">3-right</div>
+    </div>
+    <div class="outer outer4">
+        <div class="left">4-left</div>
+        <div class="right">4-right</div>
+    </div>
+</body>
+
+</html>
