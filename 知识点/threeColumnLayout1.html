@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* float */
+        /* .content {
+            height: 300px;
+        }
+
+        .left {
+            width: 100px;
+            float: left;
+            height: 300px;
+            background-color: gold;
+        }
+
+        .right {
+            width: 100px;
+            float: right;
+            height: 300px;
+            background-color: tomato;
+        }
+
+        .middle {
+            width: auto;
+            height: 300px;
+            background-color: yellowgreen;
+            margin-left: 100px;
+            margin-right: 100px;
+        } */
+
+        /* flex */
+        /* .content {
+            display: flex;
+        }
+
+        .left {
+            flex-basis: 100px;
+            height: 300px;
+            background-color: teal;
+        }
+
+        .middle {
+            flex: 1;
+            height: 300px;
+            background-color: tomato;
+        }
+
+        .right {
+            flex-basis: 100px;
+            height: 300px;
+            background-color: yellow;
+        } */
+
+        /* position */
+        .content {
+            position: relative;
+        }
+
+        .left {
+            position: absolute;
+            height: 300px;
+            width: 100px;
+            left: 0;
+            background-color: teal;
+        }
+
+        .middle {
+            width: auto;
+            height: 300px;
+            margin-left: 100px;
+            margin-right: 100px;
+            background-color: tomato;
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px;
+            height: 300px;
+            background-color: violet;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 垂直三栏布局，左右两栏宽度固定，中间自适应 -->
+    <div class="content">
+        <div class="left">left</div>
+        <div class="middle">middle</div>
+        <div class="right">right</div>
+    </div>
+</body>
+
+</html>
