@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 都是相对于屏幕宽度的比例 */
+        .square1 {
+            width: 10%;
+            height: 10vw;
+            background-color: red;
+        }
+
+        /* margin/padding 百分比是相对父元素 width 的 */
+        .square2 {
+            width: 20%;
+            height: 0;
+            padding-top: 20%;
+            background-color: orange;
+        }
+
+        /* 通过子元素 margin */
+        .square3 {
+            width: 30%;
+            overflow: hidden;
+            /* 触发 BFC */
+            background-color: yellow;
+        }
+
+        .square3::after {
+            content: '';
+            display: block;
+            margin-top: 100%;
+            /* 高度相对于 square3 的 width */
+        }
+    </style>
+</head>
+<!-- 实现一个正方形 -->
+
+<body>
+    <div class="square1"></div>
+    <div class="square2"></div>
+    <div class="square3"></div>
+</body>
+
+</html>
