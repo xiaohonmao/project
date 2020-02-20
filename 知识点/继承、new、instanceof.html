@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实现一个继承
+
+        // 基类
+        function Base() {
+
+        }
+        // 派生类
+        function Derived() {
+            Base.call(this);
+        }
+        // 将派生类的原型的原型链挂在基类的原型上
+        // Object.setPrototypeOf() 方法设置一个指定的对象的原型 ( 即, 内部[[Prototype]]属性）到另一个对象或  null
+        // Object.setPrototypeOf(obj, prototype)
+        Object.setPrototypeOf(Derived.prototype, Base.prototype);
+
+
+        // 手动实现一个 new 关键字的功能的函数 _new(fun, args) --> new fun(args)
+        function _new(fun, ...args) {
+            if (typeof fun !== 'function') {
+                return new Error('参数必须是一个函数');
+            }
+            // Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。 
+            let obj = Object.create(fun.prototype);
+            let res = fun.call(obj, ...args);
+            if (res !== null && (typeof res === 'object' || typeof res === 'function')) {
+                return res;
+            }
+            return obj;
+        }
+
+
+        // 实现一个 instanceof
+        // a instanceof b
+        function _instanceof(a, b) {
+            while (a) {
+                if (a.__proto__ === b.prototype) return true;
+                a = a.__proto__;
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>
